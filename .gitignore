@@ -1,0 +1,29 @@
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# SQLite database
+chat.db
+
+# Uploaded images
+uploads/
+
+# Environment variables file
+.env
+
+# IDE directories
+.idea/
+.vscode/
+
+# Log files
+*.log
+
+# Mac system files
+.DS_Store

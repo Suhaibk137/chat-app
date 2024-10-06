@@ -1,13 +1,14 @@
 # app.py
+import os
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 from flask_socketio import SocketIO, join_room, emit
 import sqlite3
 from datetime import datetime, timedelta, timezone
-import os
 from apscheduler.schedulers.background import BackgroundScheduler
 import base64
 from uuid import uuid4
 
+# Configuration
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
@@ -16,7 +17,7 @@ if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secure_and_random_secret_key'  # Replace with a strong secret key
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'default_secret_key')  # Use environment variable
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Initialize SocketIO with threading
@@ -174,4 +175,5 @@ def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0', port=5001)  # Running on port 5001
+    port = int(os.environ.get('PORT', 5001))
+    socketio.run(app, host='0.0.0.0', port=port)
