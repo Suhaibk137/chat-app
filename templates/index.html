@@ -1,0 +1,46 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Chat App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <!-- Reference to local Socket.IO script -->
+    <script src="{{ url_for('static', filename='socket.io.min.js') }}"></script>
+</head>
+<body>
+    {% if not room %}
+    <div class="login-container">
+        <h2>Join Chat Room</h2>
+        <form method="POST">
+            <input type="text" name="room" placeholder="Enter room code" required>
+            <button type="submit">Join</button>
+        </form>
+    </div>
+    {% else %}
+    <div class="chat-container">
+        <div class="chat-header">
+            <h3>Room: {{ room }}</h3>
+        </div>
+        <div class="chat-messages" id="messages">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Type a message...">
+            <input type="file" id="image-input" accept="image/*">
+            <label for="image-input" aria-label="Upload Image">📷</label>
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    <div class="image-preview" id="image-preview" style="display: none;">
+        <img id="preview-img" src="#" alt="Image Preview">
+        <button id="remove-image">✖</button>
+    </div>
+    <script>
+        const room = "{{ room }}";
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    {% endif %}
+</body>
+</html>

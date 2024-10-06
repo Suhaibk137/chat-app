@@ -1,0 +1,11 @@
+chat_app/
+│
+├── app.py
+├── chat.db
+├── requirements.txt
+├── uploads/
+├── static/
+│   ├── styles.css
+│   └── script.js
+└── templates/
+    └── index.html
