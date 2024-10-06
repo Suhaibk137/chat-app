@@ -20,27 +20,27 @@ body {
 .login-container form {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     max-width: 400px;
 }
 
 .login-container input {
-    padding: 12px;
-    margin: 8px 0;
+    padding: 15px; /* Increased padding for larger input fields */
+    margin: 12px 0; /* Increased margin for better spacing */
     border-radius: 5px;
     border: 1px solid #ccc;
-    font-size: 1em;
+    font-size: 1.1em; /* Increased font size for better readability */
 }
 
 .login-container button {
-    padding: 12px;
-    margin-top: 10px;
+    padding: 15px;
+    margin-top: 15px;
     background-color: #128C7E;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.1em; /* Increased font size */
 }
 
 .chat-container {
@@ -52,25 +52,29 @@ body {
 .chat-header {
     background-color: #075E54;
     color: white;
-    padding: 15px;
+    padding: 20px; /* Increased padding */
     text-align: center;
+    font-size: 1.4em; /* Increased font size */
 }
 
 .chat-messages {
     flex: 1;
-    padding: 20px;
+    padding: 25px; /* Increased padding */
     background-color: #ECE5DD;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
 }
 
 .message {
-    margin-bottom: 15px;
-    max-width: 70%;
-    padding: 10px 15px;
-    border-radius: 20px;
+    margin-bottom: 20px; /* Increased margin */
+    max-width: 85%;
+    padding: 15px 20px; /* Increased padding */
+    border-radius: 25px; /* More rounded corners */
     position: relative;
     clear: both;
     word-wrap: break-word;
+    font-size: 1.1em; /* Increased font size */
 }
 
 .message.sent {
@@ -90,12 +94,12 @@ body {
 .message img {
     max-width: 100%;
     border-radius: 10px;
-    margin-top: 5px;
+    margin-top: 10px; /* Increased margin */
 }
 
 .chat-input {
     display: flex;
-    padding: 10px;
+    padding: 15px; /* Increased padding */
     background-color: #F0F0F0;
     align-items: center;
     flex-wrap: wrap;
@@ -103,12 +107,12 @@ body {
 
 .chat-input input[type="text"] {
     flex: 1;
-    min-width: 150px;
-    padding: 10px;
+    min-width: 200px; /* Increased minimum width */
+    padding: 15px; /* Increased padding */
     border: none;
-    border-radius: 20px;
-    margin-right: 10px;
-    font-size: 1em;
+    border-radius: 25px; /* More rounded corners */
+    margin-right: 15px; /* Increased margin */
+    font-size: 1.1em; /* Increased font size */
 }
 
 .chat-input input[type="file"] {
@@ -116,53 +120,54 @@ body {
 }
 
 .chat-input label {
-    margin-right: 10px;
+    margin-right: 15px; /* Increased margin */
     cursor: pointer;
-    font-size: 1.5em;
+    font-size: 1.8em; /* Increased icon size */
 }
 
 .chat-input button {
-    padding: 10px 20px;
+    padding: 12px 25px; /* Increased padding */
     background-color: #128C7E;
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 25px; /* More rounded corners */
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.1em; /* Increased font size */
 }
 
 .status {
     text-align: center;
     color: gray;
-    font-size: 0.9em;
-    margin-bottom: 10px;
+    font-size: 1em; /* Increased font size */
+    margin-bottom: 15px; /* Increased margin */
 }
 
 .timestamp {
     display: block;
-    font-size: 0.8em;
+    font-size: 0.9em;
     color: gray;
     margin-top: 5px;
 }
 
 .image-preview {
     position: fixed;
-    bottom: 80px;
+    bottom: 100px; /* Adjusted position */
     left: 50%;
     transform: translateX(-50%);
     background-color: white;
-    padding: 10px;
+    padding: 15px; /* Increased padding */
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px; /* More rounded corners */
     display: flex;
     align-items: center;
+    z-index: 1000; /* Ensure it stays above other elements */
 }
 
 .image-preview img {
-    max-width: 100px;
-    max-height: 100px;
-    border-radius: 5px;
-    margin-right: 10px;
+    max-width: 120px; /* Increased size */
+    max-height: 120px; /* Increased size */
+    border-radius: 10px;
+    margin-right: 15px; /* Increased margin */
 }
 
 .image-preview button {
@@ -170,33 +175,64 @@ body {
     color: white;
     border: none;
     border-radius: 50%;
-    width: 25px;
-    height: 25px;
+    width: 30px; /* Increased size */
+    height: 30px; /* Increased size */
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.2em; /* Increased font size */
 }
 
-/* Responsive Design */
+/* Responsive Design Enhancements */
 @media (max-width: 600px) {
+    .chat-header {
+        font-size: 1.2em;
+        padding: 15px;
+    }
+
     .chat-input {
         flex-direction: column;
+        align-items: stretch;
     }
 
     .chat-input input[type="text"] {
         margin-right: 0;
         margin-bottom: 10px;
         width: 100%;
+        min-width: unset;
+    }
+
+    .chat-input label {
+        margin-right: 0;
+        margin-bottom: 10px;
+        font-size: 2em;
     }
 
     .chat-input button {
         width: 100%;
+        font-size: 1em;
     }
 
     .message {
-        max-width: 90%;
+        max-width: 95%;
+        padding: 15px 20px;
+        font-size: 1em;
+    }
+
+    .message.sent, .message.received {
+        font-size: 1em;
     }
 
     .image-preview {
-        bottom: 100px;
+        bottom: 120px;
+    }
+
+    .image-preview img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+
+    .image-preview button {
+        width: 25px;
+        height: 25px;
+        font-size: 1em;
     }
 }
