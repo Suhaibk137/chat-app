@@ -1,4 +1,3 @@
-# app.py
 import os
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 from flask_socketio import SocketIO, join_room, emit
@@ -7,6 +6,9 @@ from datetime import datetime, timedelta, timezone
 from apscheduler.schedulers.background import BackgroundScheduler
 import base64
 from uuid import uuid4
+import eventlet
+
+eventlet.monkey_patch()
 
 # Configuration
 UPLOAD_FOLDER = 'uploads'
@@ -20,8 +22,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'default_secret_key')  # Use environment variable
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Initialize SocketIO with threading
-socketio = SocketIO(app, async_mode='threading', cors_allowed_origins="*")
+# Initialize SocketIO with eventlet
+socketio = SocketIO(app, async_mode='eventlet', cors_allowed_origins="*")
 
 # Register adapters and converters for sqlite3
 def adapt_datetime(dt):
@@ -175,5 +177,5 @@ def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5001))
+    port = int(os.environ.get('PORT', 5000))
     socketio.run(app, host='0.0.0.0', port=port)
